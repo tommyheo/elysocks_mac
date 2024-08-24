@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import Header from './components/Header';
 import Login from './pages/user/Login';
 import Join from './pages/user/Join';
+import AdminHome from './pages/admin/AdminHome';
+import AdminMember from './pages/admin/AdminMember';
 
 function App() {
     return (
@@ -14,6 +16,8 @@ function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/join" element={<Join />} />
+                    <Route path="/admin" element={<AdminHome />} />
+                    <Route path="/admin/member" element={<AdminMember />} />
                 </Routes>
             </BrowserRouter>
         </div>

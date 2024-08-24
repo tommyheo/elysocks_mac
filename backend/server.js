@@ -24,7 +24,9 @@ app.use(express.json());
 
 // ----------------- Routers -----------------
 const userRouter = require('./routers/userRouter');
+const adminRouter = require('./routers/adminRouter');
 app.use('/api/user', userRouter);
+app.use('/api/admin', adminRouter);
 
 // ----------------- Server Listening -----------------
 app.listen(port, () => {

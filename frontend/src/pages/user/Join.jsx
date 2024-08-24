@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import DaumPostcode from 'react-daum-postcode';
+import { useNavigate } from 'react-router-dom';
 
 const Join = () => {
+    const navi = useNavigate();
+
     // ----------------- API URL -----------------
     const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -19,6 +22,7 @@ const Join = () => {
     const address = `${frontAddress} ${detailAddress}`;
     const [isOpen, setIsOpen] = useState(false);
 
+    // ----------------- User Info Submit Handler-----------------
     const handleSubmit = () => {
         axios
             .post(`${apiUrl}/user/register`, {
@@ -31,7 +35,12 @@ const Join = () => {
                 role,
             })
             .then((res) => {
-                console.log(res.data);
+                if (res.data.register === true) {
+                    alert(`${res.data.message}`);
+                    navi('/login');
+                } else {
+                    alert(`${res.data.message}`);
+                }
             })
             .catch((err) => {
                 console.log(err);
@@ -91,7 +100,7 @@ const Join = () => {
         position: 'absolute',
         top: '10%',
         left: '10%',
-        width: '50%',
+        width: '40%',
         height: '50%',
         border: '1px solid #000',
     };
